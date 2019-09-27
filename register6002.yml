@@ -1,0 +1,37 @@
+
+server:
+  port: 6002
+
+
+spring:
+  application:
+    name: eureka-register
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      username: root
+      password: 123456
+      url: jdbc:mysql://localhost:3306/parking_pay_app?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+
+
+
+
+
+eureka:
+  client:
+    #表示是否从注册中心抓取服务
+    fetch-registry: false
+    # 是否将我这个服务注册到注册中心
+    register-with-eureka: true
+    # 表示注册中心的地址
+    service-url:
+      # 地址为Eureka的地址，表示将我的服务注册到哪个注册中心
+      defaultZone: http://localhost:7961/eureka/
+
+  instance:
+    # 将服务的IP地址信息注册到 Eureka上
+    prefer-ip-address: true
+
+mybatis:
+  mapper-locations: classpath:mappers/**/*.xml
+  type-aliases-package: com.ys.domain.entity
